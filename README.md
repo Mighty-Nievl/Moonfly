@@ -14,9 +14,9 @@
 
 ## Bahasa Indonesia
 
-### 📖 Tentang Moonfly
+### 📖 Tentang# Moonfly 🌙 (v1.2)
 
-Moonfly adalah ekstensi Chrome yang mengubah halaman New Tab Anda menjadi bookmark manager yang indah dan fungsional. Dengan desain glassmorphism yang modern dan fitur-fitur canggih, Moonfly membuat pengelolaan bookmark menjadi pengalaman yang menyenangkan.
+> **Moonfly** adalah ekstensi Chrome "New Tab" yang minimalis, aesthetic, dan fungsional. Mengubah halaman tab baru yang membosankan menjadi dashboard produktivitas yang cantik.ndah dan fungsional. Dengan desain glassmorphism yang modern dan fitur-fitur canggih, Moonfly membuat pengelolaan bookmark menjadi pengalaman yang menyenangkan.
 
 ### ✨ Fitur Utama
 
@@ -230,6 +230,13 @@ Moonfly is a Chrome extension that transforms your New Tab page into a beautiful
 - **Chrome Extension API**: Bookmarks API, Storage Sync API
 
 ### 📝 Changelog
+
+#### v1.2.0 (2025-12-10) - "The Premium Upgrade"
+- ✨ **Donation Feature**: Added support for Saweria & GitHub Sponsors with a stunning glassmorphism modal.
+- 🐉 **10-Spark Swarm Animation**: Implemented a chaotic, non-repeating "Dragon Spirit" animation system for the donation modal (with 10 independent particles).
+- 💎 **Premium UI Refinement**: Overhauled Light Mode & Dark Mode with softer shadows, better contrast, and cleaner definition for all controls (toggles, sliders, inputs).
+- 🦶 **Branded Footer**: Added app version and author info to the sidebar menu.
+- 🔧 **Under-the-hood**: Cleaned up assets and resolved class name conflicts.
 
 #### v1.0.0 (2025-12-10)
 - ✨ Initial release
