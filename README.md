@@ -2,7 +2,7 @@
   <img src="assets/icon.png" alt="Moonfly Icon" width="100" style="filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));">
 </p>
 
-<p style="text-align: center; font-size: 2.5em; color: #009977; margin-bottom: -5px; font-weight: bold; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5)); margin-top: -10px;">Moonfly</p>
+# Moonfly
 <p style="text-align: center;">Beautiful Bookmark Manager on New Tab</p>
 
 <img src="assets/dark.png" alt="Moonfly Screenshot Dark" style="box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
