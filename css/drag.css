@@ -1,0 +1,15 @@
+/* Drag & Drop Visual Indicators */
+li.drop-target-top {
+    border-top: 2px solid var(--accent-primary) !important;
+    margin-top: -2px; /* Prevent jitter */
+}
+
+li.drop-target-bottom {
+    border-bottom: 2px solid var(--accent-primary) !important;
+    margin-bottom: -2px; /* Prevent jitter */
+}
+
+li.drag-src {
+    opacity: 0.4;
+    border: 1px dashed rgba(255,255,255,0.5);
+}

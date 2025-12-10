@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bookmark Organizer</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   
@@ -17,6 +17,7 @@
 
   <header>
     <div class="header-left">
+        <img src="assets/icon.png" alt="Moonfly Icon" class="header-icon">
         <h1>Moonfly</h1>
     </div>
     
@@ -37,6 +38,15 @@
       
     </div>
   </header>
+
+  <!-- Floating Menu Button (appears when header is hidden) -->
+  <button id="floating-menu-btn" class="icon-btn floating-menu-btn hidden" title="Menu">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </button>
 
   <main id="bookmark-container" class="card-view">
     </main>
@@ -72,7 +82,7 @@
       </div>
 
       <div class="menu-item">
-          <button id="toggle-titles-btn" class="menu-action" style="justify-content: space-between;">
+          <button id="toggle-titles-btn" class="menu-action menu-toggle-btn">
               <span>Show Tooltips</span>
               <div id="titles-toggle" class="toggle-switch">
                   <div class="toggle-knob"></div>
@@ -81,7 +91,7 @@
       </div>
 
       <div class="menu-item">
-          <button id="toggle-clock-btn" class="menu-action" style="justify-content: space-between;">
+          <button id="toggle-clock-btn" class="menu-action menu-toggle-btn">
               <span>Show Clock</span>
               <div id="clock-toggle" class="toggle-switch">
                   <div class="toggle-knob"></div>
@@ -90,9 +100,27 @@
       </div>
 
       <div class="menu-item">
-          <button id="toggle-date-btn" class="menu-action" style="justify-content: space-between;">
+          <button id="toggle-date-btn" class="menu-action menu-toggle-btn">
               <span>Show Date</span>
               <div id="date-toggle" class="toggle-switch">
+                  <div class="toggle-knob"></div>
+              </div>
+          </button>
+      </div>
+
+      <div class="menu-item">
+          <button id="toggle-header-btn" class="menu-action menu-toggle-btn">
+              <span>Show Header</span>
+              <div id="header-toggle" class="toggle-switch">
+                  <div class="toggle-knob"></div>
+              </div>
+          </button>
+      </div>
+
+      <div class="menu-item">
+          <button id="toggle-dark-mode-btn" class="menu-action menu-toggle-btn">
+              <span>Dark Mode</span>
+              <div id="dark-mode-toggle" class="toggle-switch active"> <!-- Default On -->
                   <div class="toggle-knob"></div>
               </div>
           </button>
@@ -109,6 +137,45 @@
               <button class="color-swatch" data-color="red" style="background: linear-gradient(135deg, #FF6B6B, #C92A2A);" title="Red"></button>
           </div>
       </div>
+
+      <div class="menu-divider"></div>
+      
+      <div class="appearance-section">
+        <div class="appearance-title">Category Style</div>
+        <div class="slider-row">
+            <label>Radius</label>
+            <input type="range" id="ctrl-card-radius" min="0" max="32" value="16">
+        </div>
+        <div class="slider-row">
+            <label>Opacity</label>
+            <input type="range" id="ctrl-card-opacity" min="0" max="100" value="5">
+        </div>
+        <div class="slider-row">
+            <label>Blur</label>
+            <input type="range" id="ctrl-card-blur" min="0" max="40" value="12">
+        </div>
+      </div>
+
+      <div class="appearance-section">
+        <div class="appearance-title">Bookmark Style</div>
+        <div class="slider-row">
+            <label>Radius</label>
+            <input type="range" id="ctrl-bm-radius" min="0" max="24" value="12">
+        </div>
+        <div class="slider-row">
+            <label>Opacity</label>
+            <input type="range" id="ctrl-bm-opacity" min="0" max="100" value="10">
+        </div>
+        <div class="slider-row">
+            <label>Blur</label>
+            <input type="range" id="ctrl-bm-blur" min="0" max="20" value="0">
+        </div>
+        <div class="slider-row" style="justify-content: flex-end; margin-top: 5px;">
+            <button id="reset-appearance-btn">↺ Reset Defaults</button>
+        </div>
+      </div>
+      
+      <div class="menu-divider"></div>
 
       <div class="menu-item" id="column-settings-item">
         <span>Columns:</span>
@@ -154,9 +221,75 @@
           </div>
       </div>
       
+
+      
+      <!-- About & Donate Footer -->
+      <div class="menu-footer">
+          <div class="footer-info">
+          <span class="app-version">Moonfly v1.2</span>
+          <span class="app-author">by Mighty Nievl</span>
+      </div>
+          <button id="donate-btn" class="donate-btn-pulse">
+              <span>☕ Traktir Kopi</span>
+          </button>
+      </div>
+
       <input type="file" id="import-file" accept=".html" style="display: none;">
   </div>
 
-  <script src="script.js"></script>
+  <!-- Donation Modal (Doflix Adaptation) -->
+  <div id="donation-modal" class="modal hidden">
+      <div class="modal-card donation-card">
+          <!-- Dragon Animation Layer -->
+          <div class="dragon-container">
+              <svg width="100%" height="100%" class="dragon-svg" preserveAspectRatio="none">
+                  <!-- 10 Chaotic Sparks -->
+                  <!-- Mix of sizes for depth -->
+                  <circle cx="0" cy="0" r="8" fill="url(#grad-spark)" class="spirit-orb d-orb-1"/>
+                  <circle cx="0" cy="0" r="6" fill="url(#grad-spark)" class="spirit-orb d-orb-2"/>
+                  <circle cx="0" cy="0" r="5" fill="url(#grad-spark)" class="spirit-orb d-orb-3"/>
+                  <circle cx="0" cy="0" r="7" fill="url(#grad-spark)" class="spirit-orb d-orb-4"/>
+                  <circle cx="0" cy="0" r="4" fill="url(#grad-spark)" class="spirit-orb d-orb-5"/>
+                  <circle cx="0" cy="0" r="6" fill="url(#grad-spark)" class="spirit-orb d-orb-6"/>
+                  <circle cx="0" cy="0" r="8" fill="url(#grad-spark)" class="spirit-orb d-orb-7"/>
+                  <circle cx="0" cy="0" r="5" fill="url(#grad-spark)" class="spirit-orb d-orb-8"/>
+                  <circle cx="0" cy="0" r="7" fill="url(#grad-spark)" class="spirit-orb d-orb-9"/>
+                  <circle cx="0" cy="0" r="6" fill="url(#grad-spark)" class="spirit-orb d-orb-10"/>
+                  
+                  <defs>
+                      <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                          <stop offset="0%" style="stop-color:#009977;stop-opacity:0.6" />
+                          <stop offset="100%" style="stop-color:#009977;stop-opacity:0" />
+                      </radialGradient>
+                      <radialGradient id="grad-spark" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                          <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9" />
+                          <stop offset="40%" style="stop-color:#009977;stop-opacity:0.8" />
+                          <stop offset="100%" style="stop-color:#009977;stop-opacity:0" />
+                      </radialGradient>
+                  </defs>
+              </svg>
+          </div>
+          <div class="modal-header">
+              <h3>Support Development 🚀</h3>
+              <button id="close-donation-modal" class="close-modal-btn">×</button>
+          </div>
+          <div class="modal-body">
+              <p>Suka dengan Moonfly? Dukung developer untuk terus berkarya dan update fitur baru!</p>
+              <div class="donation-options">
+                  <a href="https://saweria.co/nievl" target="_blank" class="donation-option saweria">
+                      <span class="emoji">🎁</span>
+                      <span class="label">Saweria</span>
+                  </a>
+                  <a href="https://github.com/sponsors/Mighty-Nievl" target="_blank" class="donation-option github">
+                      <span class="emoji">❤️</span>
+                      <span class="label">GitHub Sponsor</span>
+                  </a>
+              </div>
+              <p class="thank-you-note">"Satu kopi dari kamu = Mood booster seharian!" ☕</p>
+          </div>
+      </div>
+  </div>
+
+  <script src="js/script.js"></script>
 </body>
 </html>

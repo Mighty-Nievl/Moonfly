@@ -1,15 +1,15 @@
 {
   "manifest_version": 3,
-  "name": "Bookmark Organizer Antigravity",
-  "version": "1.0",
+  "name": "Moonfly",
+  "version": "1.2",
   "description": "Menampilkan bookmark di New Tab dengan tampilan Card atau Kolom.",
   "permissions": ["bookmarks", "favicon", "storage"],
   "chrome_url_overrides": {
     "newtab": "newtab.html"
   },
   "icons": {
-    "16": "icon.png",
-    "48": "icon.png",
-    "128": "icon.png"
+    "16": "assets/icon.png",
+    "48": "assets/icon.png",
+    "128": "assets/icon.png"
   }
 }

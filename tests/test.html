@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonfly Test Runner</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="test_mock.js"></script>
+</head>
+<body>
+  
+  <!-- Background Orbs -->
+  <div class="background-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+  </div>
+
+  <header>
+    <div class="header-left">
+        <h1>Moonfly (Test Mode)</h1>
+    </div>
+    
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search bookmarks...">
+    </div>
+
+    <div class="controls">
+      <div id="realtime-clock" class="clock">00:00:00</div>
+      <button id="menu-btn" class="icon-btn" title="Menu">☰</button>
+      
+      <!-- Main Menu Dropdown -->
+      <div id="main-menu" class="main-menu hidden">
+          <div class="menu-item">
+              <span>Mode:</span>
+              <button id="lock-btn">🔒 Lock</button>
+          </div>
+          
+          <div class="menu-item">
+              <span>View:</span>
+              <div class="view-toggles">
+                  <button id="view-card" class="active">Card</button>
+                  <button id="view-column">Kolom</button>
+              </div>
+          </div>
+
+          <div class="menu-item">
+              <button id="toggle-titles-btn" class="menu-action" style="justify-content: space-between;">
+                  <span>Show Tooltips</span>
+                  <span id="titles-status">ON</span>
+              </button>
+          </div>
+
+          <div class="menu-item" id="column-settings-item">
+            <span>Columns:</span>
+             <div class="col-control">
+                <input type="number" id="col-count" min="2" max="6" value="3">
+             </div>
+          </div>
+
+          <div class="menu-divider"></div>
+
+          <button id="add-category-btn" class="menu-action">➕ Add Category</button>
+          
+          <div class="dropdown-submenu">
+            <button id="import-btn" class="menu-action">📥 Import ▼</button>
+            <div id="import-dropdown" class="submenu-content hidden">
+              <a href="#" id="import-file-trigger">File HTML</a>
+              <a href="#" id="import-browser-trigger">Browser</a>
+            </div>
+          </div>
+      </div>
+      
+      <!-- Hidden File Input -->
+      <input type="file" id="import-file" accept=".html" style="display: none;">
+    </div>
+  </header>
+
+  <main id="bookmark-container" class="card-view">
+    </main>
+
+  <!-- Custom Modal Overlay -->
+  <div id="modal-overlay" class="hidden">
+      <div class="modal-card">
+          <h2 id="modal-title">Title</h2>
+          <div class="modal-body">
+              <input type="text" id="modal-input" class="hidden" placeholder="Enter name...">
+              <p id="modal-message"></p>
+          </div>
+          <div class="modal-actions">
+              <button id="modal-cancel">Cancel</button>
+              <button id="modal-confirm" class="primary">Confirm</button>
+          </div>
+      </div>
+  </div>
+
+  <!-- Context Menu -->
+  <div id="context-menu" class="context-menu hidden">
+      <div id="ctx-edit">✏️ Edit</div>
+      <div id="ctx-delete" class="danger">🗑️ Delete</div>
+  </div>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

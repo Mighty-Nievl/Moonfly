@@ -1,0 +1,94 @@
+
+/* Appearance Settings UI */
+.appearance-section {
+    background: var(--toggle-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 12px;
+}
+.appearance-title {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    padding-left: 2px;
+}
+
+.slider-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 15px;
+}
+
+.slider-row label {
+    font-size: 0.85rem;
+    color: var(--text-main);
+    min-width: 50px;
+}
+
+/* Custom Range Slider */
+input[type=range] {
+    -webkit-appearance: none;
+    appearance: none; /* Fix lint: standard property */
+    width: 100%;
+    background: transparent;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #ffffff; /* White thumb for light mode premium */
+    cursor: pointer;
+    margin-top: -6px; 
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* Slightly sharper shadow */
+    border: 1px solid rgba(0,0,0,0.1); /* KEY BORDER */
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    background: var(--accent-primary);
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: var(--toggle-bg); /* Track color */
+    border-radius: 2px;
+}
+
+#reset-appearance-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+#reset-appearance-btn:hover {
+    color: var(--accent-primary);
+    background: var(--toggle-bg);
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: var(--border-color);
+}
