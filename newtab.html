@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookmark Organizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <!-- Background Orbs -->
+  <div class="background-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+  </div>
+
+  <header>
+    <div class="header-left">
+        <h1>Moonfly</h1>
+    </div>
+    
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search bookmarks...">
+    </div>
+
+    <div class="controls">
+      <div id="realtime-clock" class="clock">00:00:00</div>
+      <div id="realtime-date" class="clock">01-01-25</div>
+      <button id="menu-btn" class="icon-btn" title="Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      
+    </div>
+  </header>
+
+  <main id="bookmark-container" class="card-view">
+    </main>
+
+  <!-- Custom Modal Overlay -->
+  <div id="modal-overlay" class="hidden">
+      <div class="modal-card">
+          <h2 id="modal-title">Title</h2>
+          <div class="modal-body">
+              <input type="text" id="modal-input" class="hidden" placeholder="Enter name...">
+              <p id="modal-message"></p>
+          </div>
+          <div class="modal-actions">
+              <button id="modal-cancel">Cancel</button>
+              <button id="modal-confirm" class="primary">Confirm</button>
+          </div>
+      </div>
+  </div>
+
+  <!-- Context Menu -->
+  <div id="context-menu" class="context-menu hidden">
+      <div id="ctx-edit">✏️ Edit</div>
+      <div id="ctx-delete" class="danger">🗑️ Delete</div>
+  </div>
+
+  <!-- Main Menu Sidebar (Moved to root) -->
+  <div id="main-menu" class="main-menu hidden">
+      <div class="menu-item">
+          <div class="view-toggles">
+              <button id="view-card" class="active">Card</button>
+              <button id="view-column">Kolom</button>
+          </div>
+      </div>
+
+      <div class="menu-item">
+          <button id="toggle-titles-btn" class="menu-action" style="justify-content: space-between;">
+              <span>Show Tooltips</span>
+              <div id="titles-toggle" class="toggle-switch">
+                  <div class="toggle-knob"></div>
+              </div>
+          </button>
+      </div>
+
+      <div class="menu-item">
+          <button id="toggle-clock-btn" class="menu-action" style="justify-content: space-between;">
+              <span>Show Clock</span>
+              <div id="clock-toggle" class="toggle-switch">
+                  <div class="toggle-knob"></div>
+              </div>
+          </button>
+      </div>
+
+      <div class="menu-item">
+          <button id="toggle-date-btn" class="menu-action" style="justify-content: space-between;">
+              <span>Show Date</span>
+              <div id="date-toggle" class="toggle-switch">
+                  <div class="toggle-knob"></div>
+              </div>
+          </button>
+      </div>
+
+      <div class="menu-item">
+          <span>Accent Color:</span>
+          <div class="color-picker">
+              <button class="color-swatch active" data-color="purple" style="background: linear-gradient(135deg, #8E2DE2, #4A00E0);" title="Purple"></button>
+              <button class="color-swatch" data-color="blue" style="background: linear-gradient(135deg, #00D4FF, #0066FF);" title="Blue"></button>
+              <button class="color-swatch" data-color="green" style="background: linear-gradient(135deg, #009977, #00755c);" title="Green"></button>
+              <button class="color-swatch" data-color="pink" style="background: linear-gradient(135deg, #FF6EC7, #FF0080);" title="Pink"></button>
+              <button class="color-swatch" data-color="orange" style="background: linear-gradient(135deg, #FF9A56, #FF6A00);" title="Orange"></button>
+              <button class="color-swatch" data-color="red" style="background: linear-gradient(135deg, #FF6B6B, #C92A2A);" title="Red"></button>
+          </div>
+      </div>
+
+      <div class="menu-item" id="column-settings-item">
+        <span>Columns:</span>
+         <div class="col-control stepper">
+            <button id="col-dec" class="stepper-btn">−</button>
+            <span id="col-display">3</span>
+            <button id="col-inc" class="stepper-btn">+</button>
+         </div>
+      </div>
+
+      <div class="menu-item" id="align-settings-item">
+          <div class="view-toggles align-toggles">
+            <button id="align-left" class="active" title="Perataan judul kategori bookmark: Kiri">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4h18v2H3V4zm0 14h18v2H3v-2zm0-7h12v2H3v-2z"/></svg>
+            </button>
+            <button id="align-center" title="Perataan judul kategori bookmark: Tengah">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4h18v2H3V4zm0 14h18v2H3v-2zm4-7h10v2H7v-2z"/></svg>
+            </button>
+            <button id="align-right" title="Perataan judul kategori bookmark: Kanan">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4h18v2H3V4zm0 14h18v2H3v-2zm6-7h12v2H9v-2z"/></svg>
+            </button>
+         </div>
+      </div>
+
+      <!-- Action Row -->
+      <div class="menu-actions-row">
+          <button id="lock-btn" class="icon-btn" title="Lock State">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </button>
+          
+          <button id="add-category-btn" class="icon-btn" title="Add Category">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </button>
+
+          <div class="import-wrapper">
+             <button id="import-btn" class="icon-btn" title="Import/Export">
+                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+             </button>
+             <div id="import-dropdown" class="import-dropdown hidden">
+                <button id="import-file-trigger">📂 Import from File</button>
+                <button id="export-trigger">💾 Export to File</button>
+             </div>
+          </div>
+      </div>
+      
+      <input type="file" id="import-file" accept=".html" style="display: none;">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

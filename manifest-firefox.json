@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Moonfly - Bookmark Organizer",
+  "version": "1.0",
+  "description": "Menampilkan bookmark di New Tab dengan tampilan Card atau Kolom.",
+  "permissions": ["bookmarks", "storage"],
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "moonfly@antigravity.local",
+      "strict_min_version": "109.0"
+    }
+  }
+}
